@@ -17,7 +17,7 @@ pipeline {
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
-        def mvnHome = tool name: 'Users/ganeshkesari/apache-maven-3.9.6/', type: 'maven'
+        def mvnHome = Users/ganeshkesari/apache-maven-3.9.6
         // build the project and create a JAR file
         sh 'whoami'
         sh 'pwd'
