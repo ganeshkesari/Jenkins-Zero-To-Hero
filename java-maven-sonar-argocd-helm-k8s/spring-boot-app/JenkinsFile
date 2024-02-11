@@ -16,12 +16,14 @@ pipeline {
     }
     stage('Build and Test') {
       steps {
-        sh 'ls -ltr'
-        def mvnHome = "Users/ganeshkesari/apache-maven-3.9.6"
-        // build the project and create a JAR file
-        sh 'whoami'
-        sh 'pwd'
-        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && ${mvnHome}/bin/mvn clean package'
+        script {
+          sh 'ls -ltr'
+          def mvnHome = "Users/ganeshkesari/apache-maven-3.9.6"
+          // build the project and create a JAR file
+          sh 'whoami'
+          sh 'pwd'
+          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && ${mvnHome}/bin/mvn clean package'
+        }
       }
     }
     stage('Static Code Analysis') {
