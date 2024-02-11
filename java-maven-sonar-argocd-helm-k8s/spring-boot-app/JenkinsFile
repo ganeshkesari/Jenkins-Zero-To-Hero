@@ -23,7 +23,7 @@ pipeline {
           sh 'whoami'
           sh 'pwd'
           sh 'echo ${mvnHome}'
-          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && ${mvnHome}/bin/mvn clean package'
+          sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && /Users/ganeshkesari/apache-maven-3.9.6/bin/mvn clean package'
         }
       }
     }
