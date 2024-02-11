@@ -6,10 +6,6 @@ pipeline {
     //  args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     //}
   //}
-  tools {
-        maven 'Maven 3.9.6'
-        jdk 'jdk11'
-    }
   stages {
     stage('Checkout') {
       steps {
@@ -21,14 +17,11 @@ pipeline {
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
-        sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-        '''
+        def mvnHome = tool name: 'Users/ganeshkesari/apache-maven-3.9.6/', type: 'maven'
         // build the project and create a JAR file
         sh 'whoami'
         sh 'pwd'
-        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
+        sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && ${mvnHome}/bin/mvn clean package'
       }
     }
     stage('Static Code Analysis') {
